@@ -1,0 +1,15 @@
+
+
+.powerbi-embed {
+  /* height: fit-content; */
+  height: 100vh;
+  
+}
+
+.buttons {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
