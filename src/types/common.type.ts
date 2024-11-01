@@ -24,6 +24,6 @@ export interface PowerBiComponentConfig {
             table: string;
             column: string;
         };       
-        values: string
+        values: string[] | number[]
     };
 }

@@ -17,8 +17,8 @@ export const login = async (): Promise<LoginResponse | null> => {
       method: "post",
       url: `${baseURL}/login`,
       data: {
-        username: "Darwin.Streich94@hotmail.com",
-        password: "NFdZ",
+        username: "Koby_Littel44@yahoo.com",
+        password: "Fwdh",
       },
     })
     .then((response) => {

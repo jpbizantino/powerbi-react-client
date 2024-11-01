@@ -10,7 +10,6 @@ import { usePowerBi } from './hooks/usePowerBi';
 function App() {
 
   const { handleGetReportData, handleResetReportData, reporData } = usePowerBi()
-  const [language, setLanguage] = useState('Bosnian');
 
   const [report, setReport] = useState<Embed | null>(null);
 
@@ -27,27 +26,12 @@ function App() {
         </div>
 
         <div>
-          <button onClick={async () => await handleResetReportData()}>Recargar Reporte</button>
+          <button onClick={async () => await handleResetReportData()}>Reporte Orga</button>
         </div>
-
-        {/* <div>
-          <button onClick={() => setLanguage("Galician")}>Galician</button>
-        </div>
-        <div>
-          <button onClick={() => setLanguage("Hindi")}>Hindi</button>
-        </div>
-
-        <div>
-          <button onClick={() => setLanguage("Maltese")}>Maltese</button>
-        </div>
-
-        <div>
-          <button onClick={() => setLanguage("Sindhi")}>Sindhi</button>
-        </div> */}
 
       </div>
       <div >
-
+      {/* https://learn.microsoft.com/en-us/javascript/api/overview/powerbi/control-report-filters */}
         {reporData && <PowerBIEmbed cssClassName='powerbi-embed'
           embedConfig={
             {
@@ -60,7 +44,7 @@ function App() {
 
                   $schema: reporData.filter.shema, target: { table: reporData.filter.target.table, column: reporData.filter.target.column },
                   operator: "In",
-                  values: [reporData.filter.values],
+                  values: reporData.filter.values,
                   requireSingleSelection: true,
                   filterType: models.FilterType.Basic,
                 }
@@ -70,10 +54,27 @@ function App() {
                   filters: { visible: false },
                 }
               }
+              
+              // filters: [
+              //   {
+
+              //     $schema: reporData.filter.shema, target: { table: reporData.filter.target.table, column: reporData.filter.target.column },
+              //     operator: "In",
+              //     values: [reporData.filter.values],
+              //     requireSingleSelection: true,
+              //     filterType: models.FilterType.Basic,
+              //   }
+              // ],
+              // settings: {
+              //   panes: {
+              //     filters: { visible: false },
+              //   }
+              // }
             }
 
           }
           getEmbeddedComponent={(embeddedReport) => setReport(embeddedReport)}
+          
         />}
       </div>
     </div>
